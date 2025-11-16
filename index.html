@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LearnIt Simple — Fun facts for curious kids</title>
+  <meta name="description" content="Short, simple educational articles for kids about science, animals, history and more.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand">
+      <div class="logo">LS</div>
+      <div>
+        <div style="font-weight:700">LearnIt Simple</div>
+        <div style="font-size:13px;color:var(--muted)">Fun facts for curious kids</div>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="science.html">Science</a>
+      <a href="animals.html">Animals</a>
+      <a href="history.html">History</a>
+      <a href="fun-facts.html">Fun Facts</a>
+      <a href="art.html">Art</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero card">
+      <h1>Learn something new — quick, friendly, and fun.</h1>
+      <p class="chip">Short articles written for kids. Updated often.</p>
+
+      <!-- Search bar -->
+      <div class="search">
+        <input id="search" type="search" placeholder="Search articles...">
+        <button id="btnSearch">Search</button>
+      </div>
+      <h2>Fact Of The Day:<hw>
+      <div id="sparky-fact" class="chip" style="display:none;margin-top:10px;"></div>
+
+    <!-- Featured articles -->
+    <div class="card">
+      <h3>Featured Articles</h3>
+      <div class="article-list" id="featuredArticles">
+        <a href="space-10-facts.html">10 Amazing Space Facts for Kids</a>
+        <a href="why-cats-purr.html">Why Do Cats Purr?</a>
+        <a href="who-were-the-romans.html">Who Were The Romans? (Explanation For Kids)</a>
+        <a href="art-through-the-ages.html">Art Through The Ages, An Educational Article For Kids</a>
+        <a href="what-is-fog.html">What Is Fog? Facts For Kids.</a>
+      </div>
+    </div>
+
+    <!-- Search results -->
+    <div id="searchResults" class="article-list"></div>
+  </main>
+
+  <footer>
+    &copy; 2025 LearnIt Simple • Ask a parent before sharing personal info
+  </footer>
+</div>
+
+<script>
+  // Articles list
+  const ARTICLES = [
+    {title: '10 Amazing Space Facts for Kids', category: 'Science', description: 'Short, fun facts about space explained simply for kids.', url: 'space-10-facts.html'},
+    {title: 'Why Do Cats Purr?', category: 'Animals and Science', description: 'A simple explanation of why cats purr and what it means.', url: 'why-cats-purr.html'},
+    {title: 'How Volcanoes Work (Simple Explanation)', category: 'Science', description: 'What makes a volcano erupt? A kid-friendly explanation.', url: 'how-volcanoes-work.html'},
+    {title: 'What Is Fog? Fact For Kids', category: 'Science', description: 'A short, simple text about fog.', url: 'what-is-fog.html'},
+    {title: 'Who Were The Romans? (Explanation For Kids)', category: 'History', description: 'A short but interesting document on the Romans', url: 'who-were-the-romans.html'}
+  ];
+
+  // Search functionality
+  const searchInput = document.getElementById('search');
+  const searchBtn = document.getElementById('btnSearch');
+  const searchResults = document.getElementById('searchResults');
+
+  function searchArticles() {
+    const query = searchInput.value.toLowerCase();
+    searchResults.innerHTML = '';
+    if (!query) return;
+    const results = ARTICLES.filter(a =>
+      (a.title + ' ' + a.description + ' ' + a.category).toLowerCase().includes(query)
+    );
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div>No results found. Try another word.</div>';
+      return;
+    }
+    results.forEach(a => {
+      const link = document.createElement('a');
+      link.href = a.url;
+      link.innerHTML = `<strong>${a.title}</strong><div class="chip">${a.category} — ${a.description}</div>`;
+      searchResults.appendChild(link);
+    });
+  }
+
+  searchBtn.addEventListener('click', searchArticles);
+  searchInput.addEventListener('keypress', e => { if (e.key === 'Enter') searchArticles(); });
+
+  // Fun Fact of the Day with Sparky
+  const FUN_FACTS = [
+    "Honey never spoils.",
+    "Bananas are berries, but strawberries aren't.",
+    "Octopuses have three hearts.",
+    "A group of flamingos is called a 'flamboyance'.",
+    "Lightning is hotter than the surface of the sun!"
+  ];
+
+  const sparky = document.getElementById("sparky");
+  const sparkyFact = document.getElementById("sparky-fact");
+  const today = new Date().toISOString().split('T')[0];
+  let stored = JSON.parse(localStorage.getItem("dailyFact"));
+
+  function pickNewFact() {
+    let newFact;
+    do {
+      newFact = FUN_FACTS[Math.floor(Math.random() * FUN_FACTS.length)];
+    } while (stored && newFact === stored.fact && FUN_FACTS.length > 1);
+    sparkyFact.innerText = "💡 " + newFact;
+    sparkyFact.style.display = "block";
+    localStorage.setItem("dailyFact", JSON.stringify({fact: newFact, date: today}));
+    stored = {fact: newFact, date: today};
+  }
+
+  if (stored && stored.date === today) {
+    sparkyFact.innerText = "💡 " + stored.fact;
+    sparkyFact.style.display = "block";
+  } else {
+    pickNewFact();
+  }
+
+  sparky.addEventListener("click", () => {
+    sparkyFact.style.display = "block"; // shows the same fact when clicked
+  });
+</script>
+</body>
+</html>
