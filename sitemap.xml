@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://YOUR-WEBSITE.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://YOUR-WEBSITE.com/index.html</loc>
+  </url>
+
+  <!-- Articles -->
+  <url><loc>https://YOUR-WEBSITE.com/space-10-facts.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/why-cats-purr.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/how-volcanoes-work.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/what-is-fog.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/who-were-the-romans.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/space-10-facts.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/what-are-stars.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/why-space-black.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/universe-size.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/greek-gods.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/plants-general.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/photosynthesis.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/how-seeds-grow.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/why-leaves-fall.html</loc></url>
+
+  <!-- Categories -->
+  <url><loc>https://YOUR-WEBSITE.com/science.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/animals.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/history.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/art.html</loc></url>
+  <url><loc>https://YOUR-WEBSITE.com/fun-facts.html</loc></url>
+
+</urlset>
